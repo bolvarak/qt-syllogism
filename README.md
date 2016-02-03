@@ -7,7 +7,5 @@ This is a Qt/C++ version of [Syllogism](https://github.com/CTalkobt/syllogism) f
 
 # Building
 ```shell
-cd /path/to/repo
-cmake . && make
-./qt-syllogism
+cd /path/to/repo && cmake . && make && ./qt-syllogism
 ```
