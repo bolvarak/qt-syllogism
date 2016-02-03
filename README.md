@@ -8,10 +8,6 @@ This is a Qt/C++ version of [Syllogism](https://github.com/CTalkobt/syllogism) f
 # Building
 ```shell
 cd /path/to/repo
-```
-```shell
 cmake . && make
-```
-```shell
 ./qt-syllogism
 ```
