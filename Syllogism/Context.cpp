@@ -34,30 +34,33 @@ namespace Syllogism
 		this->mAssociations.insert(memeKey, qlRelations);
 	}
 
-	bool Context::interrogate(Syllogism::Meme *memeKey, Syllogism::Equivalence eqvEquivalence, Syllogism::Meme *memeValue)
+	Comparison Context::interrogate(Meme* memeKey, Equivalence eqvEquivalence, Meme* memeValue)
 	{
+		// Create the comparison structure
+		Comparison instComparison(Equivalence::Unknown, false);
 		// Check for associations
 		if (this->mAssociations.isEmpty() || !this->mAssociations.contains(memeKey)) {
-			// We're done
-			return false;
-		}
-		// Localize the pair
-		QList<QPair<Equivalence, Meme*>> qlRelations = this->mAssociations.value(memeKey);
-		// Check the list
-		if (qlRelations.contains(QPair<Equivalence, Meme*>(eqvEquivalence, memeValue))) {
-			// We're done
-			return true;
-		}
-		// Iterate over the pairs
-		for (int intPair = 0; intPair < qlRelations.size(); ++intPair) {
-			// Interrogate the pair
-			if (this->interrogate(qlRelations.value(intPair).second, qlRelations.value(intPair).first, memeValue)) {
-				// We're done
-				return true;
+			// Reset the structure
+			instComparison = Comparison(eqvEquivalence, false);
+		} else if (this->mAssociations.value(memeKey).contains(QPair<Equivalence, Meme*>(eqvEquivalence, memeValue))) {
+			// Reset the structure
+			instComparison = Comparison(eqvEquivalence, true);
+		} else {
+			// Localize the pair
+			QList<QPair<Equivalence, Meme*>> qlRelations = this->mAssociations.value(memeKey);
+			// Iterate over the pairs
+			for (int intPair = 0; intPair < qlRelations.size(); ++intPair) {
+				// Create our recursive comparison
+				Comparison instRecursiveComparison = this->interrogate(qlRelations.value(intPair).second, qlRelations.value(intPair).first, memeValue);
+				// Interrogate the pair
+				if (instRecursiveComparison.getMatched()) {
+					// We're done
+					return instRecursiveComparison;
+				}
 			}
 		}
 		// We're done
-		return false;
+		return instComparison;
 	}
 
 ///////////////////////////////////////////////////////////////////////////////

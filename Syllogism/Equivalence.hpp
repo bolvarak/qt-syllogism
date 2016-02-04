@@ -25,7 +25,13 @@ namespace Syllogism
 		 * @paragraph This defines a strict equality similar to A = B in math, the objects can be considered identical and equal, there is no hierarchical relationship among them nor ownership
 		 * @brief Syllogism::Equivalence::Equality
 		 */
-		Equality
+		Equality,
+
+		/**
+		 * @paragraph This defines a missing or undefined equivalence
+		 * @brief Syllogism::Equivalence::Unknown
+		 */
+		Unknown
 	///////////////////////////////////////////////////////////////////////////
 	}; // End Syllogism::Equivalence Enumeration Definition //////////////////
 	/////////////////////////////////////////////////////////////////////////

@@ -5,7 +5,9 @@
 #include "QtCore/QCoreApplication"
 #include "QtCore/QDebug"
 #include "Syllogism/Equivalence.hpp"
+#include "Syllogism/Comparison.hpp"
 #include "Syllogism/Context.hpp"
+#include "Syllogism/Meme.hpp"
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Main /////////////////////////////////////////////////////////////////////
@@ -31,11 +33,11 @@ int main(int intArguments, char* chrArguments[])
 	sylContext->addSyllogism(memeMan, Syllogism::Equivalence::Equality, memeMammal);
 	sylContext->addSyllogism(memeMan, Syllogism::Equivalence::Equality, memeAnimal);
 	// Sould print true
-	qDebug() << "Man Is Mammal:     " << sylContext->interrogate(memeMan, Syllogism::Equivalence::Equality, memeMammal);
+	qDebug() << "Man Is Mammal:     " << sylContext->interrogate(memeMan, Syllogism::Equivalence::Equality, memeMammal).toString();
 	// Should print true
-	qDebug() << "Man Is Animal:     " << sylContext->interrogate(memeMan, Syllogism::Equivalence::Equality, memeAnimal);
+	qDebug() << "Man Is Animal:     " << sylContext->interrogate(memeMan, Syllogism::Equivalence::Equality, memeAnimal).toString();
 	// Should print false
-	qDebug() << "Man Is Inanimate:  " << sylContext->interrogate(memeMan, Syllogism::Equivalence::Equality, memeInanimate);
+	qDebug() << "Man Is Inanimate:  " << sylContext->interrogate(memeMan, Syllogism::Equivalence::Equality, memeInanimate).toString();
 	// We're done
 	return 0;
 ///////////////////////////////////////////////////////////////////////////////

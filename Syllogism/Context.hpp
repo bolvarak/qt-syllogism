@@ -15,6 +15,7 @@
 #include "QtCore/QObject"
 #include "QtCore/QPair"
 #include "Equivalence.hpp"
+#include "Comparison.hpp"
 #include "Meme.hpp"
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -89,9 +90,9 @@ namespace Syllogism
 			 * @param Syllogism::Meme* memeKey
 			 * @param Syllogism::Equivalence eqvEquivalence
 			 * @param Syllogism::Meme* memeValue
-			 * @return bool
+			 * @return Syllogism::Comparison
 			 */
-			bool interrogate(Meme* memeKey, Equivalence eqvEquivalence, Meme* memeValue);
+			Comparison interrogate(Meme* memeKey, Equivalence eqvEquivalence, Meme* memeValue);
 
 			///////////////////////////////////////////////////////////////////
 			/// Helpers //////////////////////////////////////////////////////
