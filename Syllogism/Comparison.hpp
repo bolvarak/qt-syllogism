@@ -98,26 +98,6 @@ namespace Syllogism
 		 */
 		bool getMatched()            { return matched;     }
 
-		///////////////////////////////////////////////////////////////////////
-		/// Setters //////////////////////////////////////////////////////////
-		/////////////////////////////////////////////////////////////////////
-
-		/**
-		 * @paragraph This method sets the equivalence enumeration type into the instance
-		 * @brief Syllogism::Comparison::setEquivalence()
-		 * @param Syllogism::Equivalence eqvEquivalence
-		 * @return void
-		 */
-		void setEquivalence(Equivalence eqvEquivalence) { equivalence = eqvEquivalence; }
-
-		/**
-		 * @paragraph This method sets the matched flag into the instance
-		 * @brief Syllogism::Comparison::setMatched()
-		 * @param bool blnMatched
-		 * @return Syllogism::Comparison* this
-		 */
-		void setMatched(bool blnMatched)                { matched     = blnMatched; }
-
 	///////////////////////////////////////////////////////////////////////////
 	}; // End Syllogism::Comparison Class Definition /////////////////////////
 	/////////////////////////////////////////////////////////////////////////

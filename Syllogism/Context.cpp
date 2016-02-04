@@ -41,10 +41,12 @@ namespace Syllogism
 		// Check for associations
 		if (this->mAssociations.isEmpty() || !this->mAssociations.contains(memeKey)) {
 			// Reset the structure
-			instComparison = Comparison(eqvEquivalence, false);
+			instComparison.equivalence = Equivalence::Unknown;
+			instComparison.matched     = false;
 		} else if (this->mAssociations.value(memeKey).contains(QPair<Equivalence, Meme*>(eqvEquivalence, memeValue))) {
 			// Reset the structure
-			instComparison = Comparison(eqvEquivalence, true);
+			instComparison.equivalence = eqvEquivalence;
+			instComparison.matched     = true;
 		} else {
 			// Localize the pair
 			QList<QPair<Equivalence, Meme*>> qlRelations = this->mAssociations.value(memeKey);
